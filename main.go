@@ -11,6 +11,7 @@ func main() {
 
 	server.GET("/file/:digest", download)
 	server.GET("/image/:digest", download)
+	server.GET("/picture/thumbnail/:digest", download)
 
 	err := server.Run()
 	if err != nil {
