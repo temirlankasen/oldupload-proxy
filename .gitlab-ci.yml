@@ -1,0 +1,17 @@
+image: docker:stable
+
+services:
+  - docker:dind
+
+stages:
+  - build_main
+
+build_main:
+  stage: build_main
+  before_script:
+    - docker login $DOCKERREGISTRY -u $DOCKERUSER -p $DOCKERPASSWORD
+  script:
+    - docker build -t git.naimi.me:5050/naimi-docker/proxy .
+    - docker push git.naimi.me:5050/naimi-docker/proxy
+  only:
+    - main

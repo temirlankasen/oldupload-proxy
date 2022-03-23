@@ -1,0 +1,10 @@
+version: '2.2'
+services:
+  proxy:
+    container_name: proxy
+    image: kasentk/oldupload-proxy:latest
+    environment:
+      PORT: 80
+      GIN_MODE: release
+    ports:
+      - "127.0.0.1:8000:80/tcp"
